@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    TESTLER
+{% endblock %}
+{% block content %}
+
+<p>
+    <b>Lütfen bu sayfada bekleyiniz. Bir sonraki bölümün kuralları anlatılmadan yeni bölüme başlamayınız.</b>
+</p>
+<p>
+    Kurallar anlatıldıktan sonra devam butonuna basarak etkinliğe başlayabilirsiniz.
+</p>
+<br>
+<br>
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    {% include Constants.instructions_template %}
+
+    <p>
+<!--        For example, for the following matrix, the correct pattern is 8.-->
+        Örneğin aşağıdaki sorunun doğru cevabı 5'tir.
+    </p>
+
+    <br/>
+
+
+    <div style="text-align:center">
+    <img src="{% static "raven/example.jpg" %}"/>
+    </div>
+
+
+    <div style="text-align:right">
+<!--        <p > Click next to start solving the problems. </p>-->
+        <p > Teste başlamak için lütfen tıklayınız. (DİKKAT: Butona bastığınız zaman {{ Constants.minutes_given }} dakikanız başlayacaktır) </p>
+        <br/>
+    {% next_button %}
+    </div>
+
+{% endblock %}

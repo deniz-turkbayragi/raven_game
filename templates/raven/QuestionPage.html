@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+     Soru: {{ player.round_number }}/ {{ Constants.num_rounds }}
+{% endblock %}
+
+
+{% block content %}
+
+    {#    <div style="text-align:center">#}
+
+    <style>
+    .raven-image {
+        height:100%;
+        width:100%;
+        max-height:400px;
+        max-width:380px
+        }
+    </style>
+
+    <img src="{% static image_path %}" class="raven-image" />
+
+
+
+    {#    <div class="form-group required">#}
+<!--    {% formfield player.answer label='Please choose an item that best fits the pattern:' %}-->
+        {% formfield player.answer label='Bu şekli en doğru şekilde tamamlayan parça hangisidir? Aşağıdaki seçeneklerden bir tanesini seçiniz :' %}
+
+    {#    </div>#}
+
+    {#   <div style="text-align:right">#}
+    {% next_button %}
+    {#    </div>#}
+{% endblock %}

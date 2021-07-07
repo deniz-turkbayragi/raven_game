@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+TEST 1- ŞEKİLLER (8 dakika)
+{% endblock %}
+
+{% block content %}
+
+<div id="buttonNext" style="text-align:right; visibility: hidden">
+    {% next_button %}
+</div>
+
+<audio id="video"  controls autoplay>
+    <source src="{% static audio_path %}"  type="audio/mp3">
+</audio>
+
+
+<script>
+
+    var video = document.getElementById('video');
+    var supposedCurrentTime = 0;
+    video.addEventListener('timeupdate', function() {
+      if (!video.seeking) {
+            supposedCurrentTime = video.currentTime;
+      }
+    });
+    video.addEventListener('seeking', function() {
+      var delta = video.currentTime - supposedCurrentTime;
+      if (delta > 0.01) {
+        video.currentTime = supposedCurrentTime;
+      }
+    });
+    console.log(video)
+    video.addEventListener('ended', function() {
+        document.getElementById("buttonNext").style.visibility = "initial";
+        supposedCurrentTime = 0;
+    });
+</script>
+
+<p> <img src="{% static image_path %}" width=100% /> </p>
+
+<h5>
+<ul>
+    <li>Bu testte, karşınıza ekranda gördüğünüz gibi, içerisinden bir parçası çıkarılmış, eksik şekiller gelecek. Altında ise bu şekli tamamlayabilecek alternatif parçaları göreceksiniz.</li>
+    <li>Lütfen parça resimlerinin üzerini değil, parçalara denk gelen rakamları işaretleyiniz. </li>
+    <li>Bu testte 23 soru bulunmaktadır.</li>
+    <li>Testi tamamlamanız için 8 dakikanız olacak.</li>
+    <li>Teste başlamak için lütfen ilerle butonuna tıklayınız.</li>
+    <li>DİKKAT: İlerle butonuna bastığınız zaman {{ Constants.minutes_given }} dakikanız başlayacaktır </li>
+</ul>
+</h5>
+
+
+
+
+{% endblock %}
